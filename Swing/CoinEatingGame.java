@@ -16,7 +16,6 @@ public class CoinEatingGame {
 
 	JPanel gamePanel = new GamePanel();
 
-	
 	int WIDTH = 1280, HEIGHT = 960;
 	int x = 100, y = 480;
 	int  SPEED = 3;
@@ -45,34 +44,29 @@ public class CoinEatingGame {
 	private boolean godMod = false;
 	private boolean end = false;
 	
-	//장애물
-	
 	LinkedList<Trap> traps = new LinkedList<>();
 	
 	public CoinEatingGame() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창을 닫으면 프로그램 종
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(WIDTH, HEIGHT);
-		frame.setResizable(false); // 크기 조절 불
-		frame.setLocationRelativeTo(null); // 창이 가운데에 뜨도
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 
-		// 장애물
-		makeTraps();		
+		makeTraps();
+		
 		frame.getContentPane().add(gamePanel);
 		frame.setVisible(true);
 
 		frame.addKeyListener(new Key());
-		gamePanel.addKeyListener(new Key());
-
 	}
 	
 	public void go() {
 		playerX = (WIDTH - playerWidth) / 2;
 		playerY = (HEIGHT - playerHeight) / 2;
 		
-		
 		pointX = (int) (Math.random() * (WIDTH - pointWidth * 2) - pointWidth);
 		pointY = (int) (Math.random() * (HEIGHT - pointHeight * 2) - pointHeight);
-		if (pointX < 220 && pointY < 90) {
+		if (pointX < 220 && pointY < 115) {
 			pointX = (int) (Math.random() * (WIDTH - pointWidth * 2) - pointWidth);
 			pointY = (int) (Math.random() * (HEIGHT - pointHeight * 2) - pointHeight);
 		}
@@ -123,7 +117,6 @@ public class CoinEatingGame {
 		public void paintComponent(Graphics g) {	
 			super.paintComponent(g);
 			setBackground(background);
-
 			g.drawImage(point, pointX, pointY, pointWidth, pointHeight, this);
 			if(lifeCnt != 0)
 			g.drawImage((godMod) ? godState : player, playerX, playerY, playerWidth, playerHeight, this);
@@ -132,11 +125,10 @@ public class CoinEatingGame {
 			g.setFont(new Font("Arial", Font.BOLD, 40));
 			g.drawString("SCORE : " + score, 30, 50);		
 			
-			// 장애물
 			for(Trap t: traps) {
 				g.drawImage(trap, t.getX(), t.getY(), trapWidth, trapHeight, this);
 			}
-
+			
 			for(int i=0; i<lifeCnt; i++) {
 				g.drawImage(life, 30 + i * 55 , 70, lifeWidth, lifeHeight, this);
 			}
@@ -226,19 +218,20 @@ public class CoinEatingGame {
 			else if(t.getY() >= HEIGHT - 100) t.setStepY(-2);
 			t.setX(t.getX() + t.stepX);
 			t.setY(t.getY() + t.stepY);
-			
-			
+				
 			if((playerX + 30 >= t.getX() && playerX + 30 <= t.getX() + 50 ) &&
-					(playerY + 30 >= t.getY() && playerY + 30 <= t.getY() + 50)) {
+					(playerY + 30 >= t.getY() && playerY + 30 <= t.getY() + 50))
+			{
 				t.setCrash(true);
 				if(!godMod) {
 					godMod = true;
 					lifeCnt--;
 				}		
-			}else {
+			}
+			else 
+			{
 			t.setCrash(false);
 			}
-			
 		}
 	}
 	
@@ -337,7 +330,5 @@ public class CoinEatingGame {
 					break;
 				}
 			}
-		
 	}
-	
 }
