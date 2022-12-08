@@ -256,16 +256,13 @@ public class CoinEatingGame {
 		} else if (up) {
 			stepX = 0;
 			stepY = -1;
-		}
-		else if (down) {
+		} else if (down) {
 			stepX = 0;
 			stepY = 1;
-		}
-		else if (left) {
+		} else if (left) {
 			stepX = -1;
 			stepY = 0;
-		}
-		else if (right) {
+		} else if (right) {
 			stepX = 1;
 			stepY = 0;
 		}
