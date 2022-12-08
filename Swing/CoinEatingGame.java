@@ -241,31 +241,31 @@ public class CoinEatingGame {
 		if (playerY < 0) up = false;
 		if (playerY > 900) down = false;
 			
-		if (up && left && playerX > 0 && playerY > 0) {
+		if (up && left) {
 			stepX = -1;
 			stepY = -1;
-		} else if (up && right && playerX < 1280 && playerY > 0) {
+		} else if (up && right) {
 			stepX = 1;
 			stepY = -1;
-		} else if (down && left && playerX > 0 && playerY < 960) {
+		} else if (down && left) {
 			stepX = -1;
 			stepY = 1;
-		} else if (down && right && playerX < 1280 && playerY < 960) {
+		} else if (down && right) {
 			stepX = 1;
 			stepY = 1;
-		} else if (up && playerY > 0) {
+		} else if (up) {
 			stepX = 0;
 			stepY = -1;
 		}
-		else if (down && playerY < 960) {
+		else if (down) {
 			stepX = 0;
 			stepY = 1;
 		}
-		else if (left && playerX > 0) {
+		else if (left) {
 			stepX = -1;
 			stepY = 0;
 		}
-		else if (right && playerX < 1280) {
+		else if (right) {
 			stepX = 1;
 			stepY = 0;
 		}
