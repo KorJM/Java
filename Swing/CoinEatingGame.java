@@ -93,7 +93,7 @@ public class CoinEatingGame {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			keyProcess();
+			playerMove();
 			crashCheck();
 			frame.repaint();
 			
@@ -235,7 +235,7 @@ public class CoinEatingGame {
 		}
 	}
 	
-	public void keyProcess() {
+	public void playerMove() {
 		if (playerX < 0) left = false;
 		if (playerX > 1260) right = false;
 		if (playerY < 0) up = false;
@@ -285,26 +285,20 @@ public class CoinEatingGame {
 			
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-					if(playerY > 0)
 					up = true;
 					break;
 				case KeyEvent.VK_DOWN:
-					if(playerY < 960)
 					down = true;
 					break;
 				case KeyEvent.VK_LEFT:
-					if(playerX > 0)
 					left = true;
 					break;
 				case KeyEvent.VK_RIGHT:
-					if(playerX < 1280)
 					right = true;
 					break;
 				default:
 					break;
 				}
-
-				frame.repaint();
 			}
 
 		@Override
