@@ -244,8 +244,12 @@ public class CoinEatingGame {
 			
 			if(end) {
 				g.setFont(new Font("Serif", Font.BOLD, 100));
-				g.setColor(Color.red);
-				g.drawString("GAME OVER", 320, 450);
+				g.setColor(Color.RED);
+				g.drawString("GAME OVER", 320, 440);
+				
+				g.setFont(new Font("Serif", Font.BOLD, 60));
+				g.setColor(Color.BLACK);
+				g.drawString("최종 점수 : " + score + "점", 400, 520);
 			}
 		}
 	}
